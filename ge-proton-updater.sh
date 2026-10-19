@@ -4,7 +4,7 @@
 # Steam directory are installed once. compatibilitytools.d is created if
 # it is missing.
 #
-#   update-ge-proton            # shell function in README.md
+#   curl -fsSL https://raw.githubusercontent.com/ivansrbulov/ge-proton-script/main/ge-proton-updater.sh | bash
 #   ge-proton-updater.sh --show-steam
 set -euo pipefail
 

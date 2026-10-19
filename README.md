@@ -6,22 +6,14 @@ Restart Steam after it finishes. The new version is under a game's Properties â†
 
 ## Command
 
-This repository is private, so the download has to include a GitHub token. Collaborator access on its own does not let an anonymous `curl` read the file.
-
-Create a personal access token with read access to this repository (fine-grained: Contents, read-only). Put this in `~/.bashrc` or `~/.zshrc`, then open a new terminal:
-
 ```bash
-export GITHUB_TOKEN=github_pat_xxx
-update-ge-proton() {
-  set -o pipefail
-  curl -fsSL \
-    -H "Authorization: Bearer $GITHUB_TOKEN" \
-    -H "Accept: application/vnd.github.raw" \
-    https://api.github.com/repos/ivansrbulov/ge-proton-script/contents/ge-proton-updater.sh \
-    | bash -s -- "$@"
-}
+curl -fsSL https://raw.githubusercontent.com/ivansrbulov/ge-proton-script/main/ge-proton-updater.sh | bash
 ```
 
-Run `update-ge-proton`. `update-ge-proton --show-steam` prints the Steam folders it found and does not download anything.
+To run it again later, put this alias in `~/.bashrc` or `~/.zshrc` and open a new terminal:
 
-If the repository is public, the token and both `-H` headers can be removed, and the URL can be `https://raw.githubusercontent.com/ivansrbulov/ge-proton-script/main/ge-proton-updater.sh`.
+```bash
+alias update-ge-proton='curl -fsSL https://raw.githubusercontent.com/ivansrbulov/ge-proton-script/main/ge-proton-updater.sh | bash -s --'
+```
+
+`update-ge-proton` installs the latest version. `update-ge-proton --show-steam` prints the Steam folders it found and does not download anything.
